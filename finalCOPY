@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Card of the Day – Yulia</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f5f0ff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+```
+h1 {
+  margin-top: 20px;
+  font-size: 28px;
+  color: #5a2785;
+}
+
+#card {
+  margin-top: 30px;
+  width: 260px;
+  height: 420px;
+  border-radius: 14px;
+  background: white;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  transition: 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+#card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 25px rgba(0,0,0,0.2);
+}
+
+.card-symbol {
+  font-size: 80px;
+  margin-bottom: 20px;
+}
+
+.card-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #5a2785;
+  margin-bottom: 15px;
+}
+
+.card-description {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.6;
+  padding: 0 10px;
+}
+
+button {
+  margin-top: 30px;
+  background: #7a3bc2;
+  color: white;
+  border: none;
+  padding: 14px 22px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  font-weight: bold;
+}
+
+button:hover {
+  background: #5a2785;
+  transform: scale(1.05);
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+.date {
+  margin-top: 10px;
+  color: #888;
+  font-size: 14px;
+}
+```
+
+  </style>
+</head>
+<body>
+  <h1>🌟 Card of the Day – Yulia 🌟</h1>
+  <p class="date" id="date"></p>
+
+  <div id="card">
+    <div class="card-symbol" id="symbol">✨</div>
+    <div class="card-title" id="title">Loading...</div>
+    <div class="card-description" id="description">Click the button below to reveal your card</div>
+  </div>
+
+<button onclick="drawCard()">Draw New Card</button>
+
+  <script>
+    const cards = [
+      {
+        symbol: "✨",
+        title: "Inspiration",
+        description: "Today brings creative energy and new ideas. Trust your intuition and let your imagination soar."
+      },
+      {
+        symbol: "🌸",
+        title: "Growth",
+        description: "You are blooming into your best self. Embrace change and nurture your personal development."
+      },
+      {
+        symbol: "💫",
+        title: "Magic",
+        description: "Unexpected opportunities await. Stay open to the wonderful surprises the universe has in store."
+      },
+      {
+        symbol: "🦋",
+        title: "Transformation",
+        description: "You're emerging from your cocoon. This is a time of beautiful metamorphosis and renewal."
+      },
+      {
+        symbol: "🌙",
+        title: "Intuition",
+        description: "Listen to your inner voice. Your subconscious knows the path forward."
+      },
+      {
+        symbol: "☀️",
+        title: "Joy",
+        description: "Radiate positivity today. Your warmth and light will inspire those around you."
+      },
+      {
+        symbol: "🎨",
+        title: "Creativity",
+        description: "Express yourself boldly. Your unique perspective is a gift to the world."
+      },
+      {
+        symbol: "💝",
+        title: "Love",
+        description: "Open your heart. Compassion and kindness will guide you to meaningful connections."
+      },
+      {
+        symbol: "🌈",
+        title: "Hope",
+        description: "After the storm comes beauty. Keep faith in brighter days ahead."
+      },
+      {
+        symbol: "⭐",
+        title: "Success",
+        description: "Your hard work is paying off. Celebrate your achievements and keep reaching for the stars."
+      }
+    ];
+
+    function drawCard() {
+      const randomIndex = Math.floor(Math.random() * cards.length);
+      const card = cards[randomIndex];
+      
+      document.getElementById('symbol').textContent = card.symbol;
+      document.getElementById('title').textContent = card.title;
+      document.getElementById('description').textContent = card.description;
+      
+      const cardElement = document.getElementById('card');
+      cardElement.style.transform = 'rotateY(360deg)';
+      setTimeout(() => {
+        cardElement.style.transform = 'rotateY(0deg)';
+      }, 600);
+    }
+
+    function updateDate() {
+      const today = new Date();
+      const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+      document.getElementById('date').textContent = today.toLocaleDateString('en-US', options);
+    }
+
+    updateDate();
+    drawCard();
+  </script>
+
+</body>
+</html>
